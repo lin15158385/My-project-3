@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 17e9f2e223bd22a4fabb136cd3f16ba9
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 232111
+  packageName: Graphics Control - Plug & Play Graphics Settings Menu and Options
+    UI
+  packageVersion: 1.1.2
+  assetPath: Assets/Plugins/Ilumisoft/Graphics Control/Scripts/UI/ApplySettingsButton.cs
+  uploadId: 752164

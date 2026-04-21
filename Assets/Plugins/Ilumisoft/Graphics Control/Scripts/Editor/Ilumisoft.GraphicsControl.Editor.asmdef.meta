@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e85b0f2ab2cb4fd4396d9ce383d836d9
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 232111
+  packageName: Graphics Control - Plug & Play Graphics Settings Menu and Options
+    UI
+  packageVersion: 1.1.2
+  assetPath: Assets/Plugins/Ilumisoft/Graphics Control/Scripts/Editor/Ilumisoft.GraphicsControl.Editor.asmdef
+  uploadId: 752164

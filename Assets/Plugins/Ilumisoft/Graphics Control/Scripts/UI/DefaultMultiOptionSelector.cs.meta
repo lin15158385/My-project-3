@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 552bbb859029b3642848169db0e28eab
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 232111
+  packageName: Graphics Control - Plug & Play Graphics Settings Menu and Options
+    UI
+  packageVersion: 1.1.2
+  assetPath: Assets/Plugins/Ilumisoft/Graphics Control/Scripts/UI/DefaultMultiOptionSelector.cs
+  uploadId: 752164

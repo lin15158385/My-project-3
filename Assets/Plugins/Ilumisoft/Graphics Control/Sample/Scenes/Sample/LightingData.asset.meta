@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 8d45325a30452d84ca3e5dbd217f75ba
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 112000000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 232111
+  packageName: Graphics Control - Plug & Play Graphics Settings Menu and Options
+    UI
+  packageVersion: 1.1.2
+  assetPath: Assets/Plugins/Ilumisoft/Graphics Control/Sample/Scenes/Sample/LightingData.asset
+  uploadId: 752164

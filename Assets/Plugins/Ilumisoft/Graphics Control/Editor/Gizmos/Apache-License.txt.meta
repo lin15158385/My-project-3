@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6b41102e005499b4fa8ef743cd1a3eb3
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 232111
+  packageName: Graphics Control - Plug & Play Graphics Settings Menu and Options
+    UI
+  packageVersion: 1.1.2
+  assetPath: Assets/Plugins/Ilumisoft/Graphics Control/Editor/Gizmos/Apache-License.txt
+  uploadId: 752164
