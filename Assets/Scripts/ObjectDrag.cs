@@ -3,31 +3,71 @@ using TMPro;
 
 public class ObjectDrag : MonoBehaviour
 {
-    public float distance = 3f;
+    [Header("Configurações de Distância e Força")]
+    public float interactionDistance = 3f;
+    public float holdDistance = 2f;
     public float moveSpeed = 10f;
 
+    [Header("UI")]
     public TextMeshProUGUI interactText;
+
+    // Boa prática: definir a câmera no Inspector ou buscar no Start
+    [SerializeField] private Camera mainCamera;
 
     private GameObject currentObject;
     private Rigidbody currentRb;
 
+    // Variáveis para guardar o estado original do Rigidbody
+    private bool originalGravity;
+    private float originalDrag;
+
+    void Start()
+    {
+        if (mainCamera == null) mainCamera = Camera.main;
+        if (interactText != null) interactText.enabled = false;
+    }
+
     void Update()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        // Só fazemos o Raycast se NÃO estivermos segurando um objeto
+        if (currentObject == null)
+        {
+            HandleRaycast();
+        }
+        else
+        {
+            // Ocultar texto enquanto segura
+            if (interactText != null) interactText.enabled = false;
+
+            // Checar input de soltar o objeto (GetKeyUp)
+            if (Input.GetKeyUp(KeyCode.E))
+            {
+                DropObject();
+            }
+        }
+    }
+
+    void FixedUpdate()
+    {
+        // Toda alteração física constante deve ficar no FixedUpdate
+        MoveObject();
+    }
+
+    private void HandleRaycast()
+    {
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        // DETETAR OBJETO
-        if (Physics.Raycast(ray, out hit, distance))
+        if (Physics.Raycast(ray, out hit, interactionDistance))
         {
             if (hit.collider.CompareTag("Draggable"))
             {
-                interactText.text = "E - Drag";
+                interactText.text = "E - Segurar";
                 interactText.enabled = true;
-                Debug.Log("A olhar para: " + hit.collider.name);
+
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    currentObject = hit.collider.gameObject;
-                    currentRb = currentObject.GetComponent<Rigidbody>();
+                    PickUpObject(hit.collider.gameObject);
                 }
             }
             else
@@ -39,17 +79,50 @@ public class ObjectDrag : MonoBehaviour
         {
             interactText.enabled = false;
         }
+    }
 
-        // ARRASTAR OBJETO
-        if (currentObject != null)
+    private void PickUpObject(GameObject obj)
+    {
+        currentObject = obj;
+        currentRb = currentObject.GetComponent<Rigidbody>();
+
+        if (currentRb != null)
         {
-            Vector3 targetPosition = Camera.main.transform.position + Camera.main.transform.forward * 2f;
-            currentRb.linearVelocity = (targetPosition - currentObject.transform.position) * moveSpeed;
+            // Salva as configurações antigas
+            originalGravity = currentRb.useGravity;
+            originalDrag = currentRb.linearDamping; // Usando linearDamping (novo nome para "drag" no Unity 6+)
 
-            if (Input.GetKeyUp(KeyCode.E))
-            {
-                currentObject = null;
-            }
+            // Prepara o objeto para ser carregado suavemente
+            currentRb.useGravity = false;
+            currentRb.linearDamping = 10f; // Evita que ele balance muito
+        }
+    }
+
+    private void DropObject()
+    {
+        if (currentRb != null)
+        {
+            // Devolve as características originais ao soltar
+            currentRb.useGravity = originalGravity;
+            currentRb.linearDamping = originalDrag;
+        }
+
+        currentObject = null;
+        currentRb = null;
+    }
+
+    private void MoveObject()
+    {
+        if (currentObject != null && currentRb != null)
+        {
+            // Calcula o ponto alvo na frente da câmera
+            Vector3 targetPosition = mainCamera.transform.position + mainCamera.transform.forward * holdDistance;
+
+            // Move o objeto em direção ao alvo
+            Vector3 moveDirection = targetPosition - currentObject.transform.position;
+
+            // Nota: linearVelocity substituiu "velocity" nas versões mais recentes (Unity 2023+)
+            currentRb.linearVelocity = moveDirection * moveSpeed;
         }
     }
 }

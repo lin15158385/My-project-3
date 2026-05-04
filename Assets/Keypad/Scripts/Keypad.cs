@@ -42,6 +42,7 @@ namespace NavKeypad
         private string currentInput;
         private bool displayingResult = false;
         private bool accessWasGranted = false;
+        public DoorLeft portaEsquerda;
 
         private void Awake()
         {
@@ -125,6 +126,10 @@ namespace NavKeypad
             onAccessGranted?.Invoke();
             panelMesh.material.SetVector("_EmissionColor", screenGrantedColor * screenIntensity);
             audioSource.PlayOneShot(accessGrantedSfx);
+            if (portaEsquerda != null)
+            {
+                portaEsquerda.Abrir();
+            }
         }
 
     }

@@ -24,34 +24,33 @@ public class DoorLeft : MonoBehaviour
 
         boxCollider = GetComponentInChildren<BoxCollider>();
     }
+   
     void Update()
     {
-        float distancia = Vector3.Distance(transform.position, jogador.position);
-
-        if (distancia <= distanciaInteracao)
-        {
-            
-
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                isOpen = !isOpen;
-                boxCollider.enabled = !isOpen;
-
-                if (isOpen)
-                    portaDireita.Abrir();
-                else
-                    portaDireita.Fechar();
-            }
-        }
-        else
-        {
-            
-        }
-
+        // A porta continua se movendo suavemente dependendo se isOpen é true ou false
         transform.localRotation = Quaternion.Lerp(
             transform.localRotation,
             isOpen ? rotacaoAberta : rotacaoFechada,
             Time.deltaTime * velocidade
         );
+    }
+
+    // O script do Keypad vai chamar esta função quando a senha estiver certa!
+    public void Abrir()
+    {
+        isOpen = true;
+        if (boxCollider != null) boxCollider.enabled = false;
+
+        // Manda a porta direita abrir junto
+        if (portaDireita != null) portaDireita.Abrir();
+    }
+
+    public void Fechar()
+    {
+        isOpen = false;
+        if (boxCollider != null) boxCollider.enabled = true;
+
+        // Manda a porta direita fechar junto
+        if (portaDireita != null) portaDireita.Fechar();
     }
 }
