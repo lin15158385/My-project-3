@@ -4425,7 +4425,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 295821370}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -10846,6 +10846,18 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 4720457245470884698, guid: 1439809131db7a04a9b6fdf47536aeb7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.0547072
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720457246233239813, guid: 1439809131db7a04a9b6fdf47536aeb7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.0738
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720457246233239813, guid: 1439809131db7a04a9b6fdf47536aeb7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.2953
+      objectReference: {fileID: 0}
     - target: {fileID: 5103535004170874426, guid: 1439809131db7a04a9b6fdf47536aeb7, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
@@ -10942,6 +10954,14 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 6362107157689193214, guid: 1439809131db7a04a9b6fdf47536aeb7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.3907
+      objectReference: {fileID: 0}
+    - target: {fileID: 6362107157689193214, guid: 1439809131db7a04a9b6fdf47536aeb7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.6954
+      objectReference: {fileID: 0}
     - target: {fileID: 7293427652742267610, guid: 1439809131db7a04a9b6fdf47536aeb7, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
@@ -10967,7 +10987,8 @@ PrefabInstance:
       value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8410388190079546693, guid: 1439809131db7a04a9b6fdf47536aeb7, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1439809131db7a04a9b6fdf47536aeb7, type: 3}
@@ -19020,8 +19041,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -19.1, y: -124.6}
-  m_SizeDelta: {x: 200, y: 150}
+  m_AnchoredPosition: {x: -6.0105, y: 67.60543}
+  m_SizeDelta: {x: 574.17, y: 534.4108}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1546215324
 MonoBehaviour:
@@ -19092,7 +19113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.95686275, g: 0.9098039, b: 0.81960785, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -23703,8 +23724,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 55
+  m_fontSizeBase: 55
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
