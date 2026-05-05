@@ -2,19 +2,27 @@ using UnityEngine;
 
 public class LerPapel : MonoBehaviour
 {
-    [Header("Arrasta o Painel_Mensagem para aqui")]
-    public GameObject painel_mensagem_1sala;
+    public GameObject painelMensagemUI;
 
-    // Esta função deteta quando clicas no papel 3D com o rato
-    void OnMouseDown()
+    public void AbrirMensagem()
     {
-        // Se a distância for importante podes adicionar uma verificação aqui depois
-        painel_mensagem_1sala.SetActive(true);
+        painelMensagemUI.SetActive(true); // Abre o pop-up
+
+        // --- A MAGIA DO RATO ---
+        // Destranca o rato para o poderes mover pelo ecrã
+        Cursor.lockState = CursorLockMode.None;
+        // Torna a setinha do rato visível
+        Cursor.visible = true;
     }
 
-    // Esta função vai ser chamada pelo botão "Fechar"
     public void FecharMensagem()
     {
-        painel_mensagem_1sala.SetActive(false);
+        painelMensagemUI.SetActive(false); // Fecha o pop-up
+
+        // --- VOLTAR AO NORMAL ---
+        // Prende o rato no centro do ecrã
+        Cursor.lockState = CursorLockMode.Locked;
+        // Esconde o rato para jogares em 1ª pessoa
+        Cursor.visible = false;
     }
 }
