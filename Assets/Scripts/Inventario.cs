@@ -8,7 +8,15 @@ public class Inventario : MonoBehaviour
 
     // Um contador para saber quantos itens já apanhámos
     private int itensGuardados = 0;
-
+    [Header("Interface do Jogo")]
+    public GameObject canvasDoInventario;
+    public GameObject canvasDoPonto;
+    // O Botão Start vai chamar isto!
+    public void LigarInterface()
+    {
+        if (canvasDoInventario != null) canvasDoInventario.SetActive(true);
+        if (canvasDoPonto != null) canvasDoPonto.SetActive(true);
+    }
     // Esta função vai ser chamada pelos itens 3D
     public void AdicionarItem(Sprite imagemDoItem)
     {

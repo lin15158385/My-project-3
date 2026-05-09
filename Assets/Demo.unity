@@ -14902,6 +14902,8 @@ MonoBehaviour:
   - {fileID: 1326855629}
   - {fileID: 978336849}
   - {fileID: 1845774740}
+  canvasDoInventario: {fileID: 1866661435}
+  canvasDoPonto: {fileID: 1835729774}
 --- !u!1001 &1177472963
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19034,6 +19036,18 @@ MonoBehaviour:
       - m_Target: {fileID: 124161898}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1176454805}
+        m_TargetAssemblyTypeName: Inventario, Assembly-CSharp
+        m_MethodName: LigarInterface
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -23868,7 +23882,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1835729775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24468,7 +24482,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1866661436
 MonoBehaviour:
   m_ObjectHideFlags: 0
