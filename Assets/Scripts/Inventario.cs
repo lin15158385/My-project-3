@@ -11,6 +11,7 @@ public class Inventario : MonoBehaviour
     [Header("Interface do Jogo")]
     public GameObject canvasDoInventario;
     public GameObject canvasDoPonto;
+    bool openinventory = true;
     // O Botão Start vai chamar isto!
     public void LigarInterface()
     {
@@ -53,4 +54,6 @@ public class Inventario : MonoBehaviour
         }
         return false; // Não, não tens a chave.
     }
+
+   
 }

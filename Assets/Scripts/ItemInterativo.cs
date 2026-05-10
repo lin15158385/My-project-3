@@ -10,6 +10,8 @@ public class ItemInterativo : MonoBehaviour
     // A referência à mochila do jogador
     public Inventario mochilaDoJogador;
 
+    
+
     void Update()
     {
         if (perto == true && Input.GetKeyDown(KeyCode.E) || perto == true && Input.GetMouseButtonDown(0))
@@ -31,4 +33,6 @@ public class ItemInterativo : MonoBehaviour
     {
         if (outro.CompareTag("Player")) perto = false;
     }
+   
+
 }
