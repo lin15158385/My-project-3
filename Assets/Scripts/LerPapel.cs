@@ -9,9 +9,8 @@ public class LerPapel : MonoBehaviour
         painelMensagemUI.SetActive(true); // Abre o pop-up
 
         // --- A MAGIA DO RATO ---
-        // Destranca o rato para o poderes mover pelo ecr„
-        Cursor.lockState = CursorLockMode.None;
-        // Torna a setinha do rato visÌvel
+        // Destranca o rato para o poderes mover pelo ecrÅE        Cursor.lockState = CursorLockMode.None;
+        // Torna a setinha do rato vis˙ìel
         Cursor.visible = true;
     }
 
@@ -20,8 +19,7 @@ public class LerPapel : MonoBehaviour
         painelMensagemUI.SetActive(false); // Fecha o pop-up
 
         // --- VOLTAR AO NORMAL ---
-        // Prende o rato no centro do ecr„
-        Cursor.lockState = CursorLockMode.Locked;
+        // Prende o rato no centro do ecrÅE        Cursor.lockState = CursorLockMode.Locked;
         // Esconde o rato para jogares em 1™ pessoa
         Cursor.visible = false;
     }
