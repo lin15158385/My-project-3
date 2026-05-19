@@ -6,7 +6,8 @@ public class HourTimer : MonoBehaviour
 {
     public float totalTime = 3600f;
     public TextMeshProUGUI timerText;
-    
+    public MenuManager menuManager;
+
 
     float timeRemaining;
     bool isRunning;
@@ -29,7 +30,9 @@ public class HourTimer : MonoBehaviour
             timeRemaining = 0f;
             isRunning = false;
             UpdateUI();
+            menuManager.DefeatGame();
             Debug.Log("Tempo esgotado!");
+
             return;
         }
 
@@ -68,4 +71,6 @@ public class HourTimer : MonoBehaviour
         isRunning = true;
         UpdateUI();
     }
+
+    
 }

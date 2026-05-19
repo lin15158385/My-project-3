@@ -1,9 +1,13 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
     public GameObject startMenu;
     public GameObject pauseMenu;
+    public GameObject endMenu;
+    public GameObject defeat;
+
 
     bool isPaused = false;
     bool gameStarted = false;
@@ -25,6 +29,8 @@ public class MenuManager : MonoBehaviour
         Time.timeScale = 0f;
         startMenu.SetActive(true);
         pauseMenu.SetActive(false);
+        endMenu.SetActive(false);
+        defeat.SetActive(false);
 
         UnlockCursor();
     }
@@ -73,5 +79,54 @@ public class MenuManager : MonoBehaviour
     {
         Application.Quit();
         Debug.Log("Quit");
+    }
+
+    public void EndGame()
+    {
+        Time.timeScale = 0f;
+
+        pauseMenu.SetActive(false);
+        startMenu.SetActive(false);
+        endMenu.SetActive(true);
+        defeat.SetActive(false);
+
+        isPaused = false;
+        gameStarted = false;
+
+        UnlockCursor();
+    }
+    public void RestartGame()
+    {
+        Time.timeScale = 1f;
+
+        isPaused = false;
+        gameStarted = true;
+
+        startMenu.SetActive(false);
+        pauseMenu.SetActive(false);
+        endMenu.SetActive(false);
+        defeat.SetActive(false);
+
+        LockCursor();
+
+        // Recarrega a cena atual
+        UnityEngine.SceneManagement.SceneManager.LoadScene(
+            UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex
+        );
+    }
+
+    public void DefeatGame()
+    {
+        Time.timeScale = 0f;
+
+        pauseMenu.SetActive(false);
+        startMenu.SetActive(false);
+        endMenu.SetActive(false);
+        defeat.SetActive(true);
+
+        isPaused = false;
+        gameStarted = false;
+
+        UnlockCursor();
     }
 }
