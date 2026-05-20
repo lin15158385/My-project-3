@@ -1,15 +1,33 @@
 using UnityEngine;
 using TMPro;
 
-public class MostrarHighscore : MonoBehaviour
+public class HighscoreVitoria : MonoBehaviour
 {
-    public TextMeshProUGUI textoDoTempo;
+    [Header("Tempo da Jogada Atual")]
+    public TextMeshProUGUI textoDoTempoAtual;
 
-    void Start()
+    [Header("Tabela do Top 3")]
+    public TextMeshProUGUI textoPrimeiroLugar;
+    public TextMeshProUGUI textoSegundoLugar;
+    public TextMeshProUGUI textoTerceiroLugar;
+
+    void OnEnable()
     {
-        // Vai procurar o texto que guardámos antes. Se não encontrar, escreve "Nenhum tempo"
-        string tempoGuardado = PlayerPrefs.GetString("TempoEmTexto", "Nenhum tempo");
+        // 1. Mostra o tempo que o jogador fez nesta run específica
+        string tempoDestaRun = PlayerPrefs.GetString("TempoAtualTexto", "00:00:00");
+        if (textoDoTempoAtual != null)
+        {
+            textoDoTempoAtual.text = "O teu tempo: " + tempoDestaRun;
+        }
 
-        textoDoTempo.text = "Tempo da última fuga: " + tempoGuardado;
+        // 2. Carrega o Top 3 histórico da memória do PC
+        string p1 = PlayerPrefs.GetString("Recorde_1_Texto", "--:--:--");
+        string p2 = PlayerPrefs.GetString("Recorde_2_Texto", "--:--:--");
+        string p3 = PlayerPrefs.GetString("Recorde_3_Texto", "--:--:--");
+
+        // 3. Atualiza os textos correspondentes no ecrã
+        if (textoPrimeiroLugar != null) textoPrimeiroLugar.text = "1º Lugar: " + p1;
+        if (textoSegundoLugar != null) textoSegundoLugar.text = "2º Lugar: " + p2;
+        if (textoTerceiroLugar != null) textoTerceiroLugar.text = "3º Lugar: " + p3;
     }
 }

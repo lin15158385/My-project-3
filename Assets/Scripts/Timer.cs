@@ -69,21 +69,55 @@ public class HourTimer : MonoBehaviour
         isRunning = true;
         UpdateUI();
     }
-
-    // --- NOVA FUNÇÃO PARA O HIGHSCORE ---
+    // --- NOVA FUNÇÃO PARA O TOP 3 HIGHSCORES ---
     public void GuardarTempoVitoria()
     {
         isRunning = false; // Pára o relógio
 
-        // Guarda o valor numérico em segundos do tempo que SOBROU
-        PlayerPrefs.SetFloat("TempoEmSegundos", timeRemaining);
+        // Calcula quanto tempo demoraste nesta run
+        float tempoGasto = totalTime - timeRemaining;
 
-        // Guarda o texto já formatado do tempo que SOBROU (ex: "0:45:10")
-        PlayerPrefs.SetString("TempoEmTexto", FormatTime(timeRemaining));
+        // Guarda o tempo DESTA RUN para o jogador ver o que acabou de fazer
+        PlayerPrefs.SetString("TempoAtualTexto", FormatTime(tempoGasto));
 
-        // Guarda as alterações fisicamente no PC/Telemóvel
+        // 1. Carrega o Top 3 atual (Se estiver vazio, pomos um número gigante como 999999)
+        float r1 = PlayerPrefs.GetFloat("Recorde_1_Segundos", 999999f);
+        float r2 = PlayerPrefs.GetFloat("Recorde_2_Segundos", 999999f);
+        float r3 = PlayerPrefs.GetFloat("Recorde_3_Segundos", 999999f);
+
+        // 2. Lógica de Encaixe e "Empurrão" (Filtro do Top 3)
+        if (tempoGasto < r1)
+        {
+            // O novo tempo é o melhor de sempre! Empurra todos para baixo
+            r3 = r2;
+            r2 = r1;
+            r1 = tempoGasto;
+        }
+        else if (tempoGasto < r2)
+        {
+            // É melhor que o 2º lugar! Empurra o 2º para 3º
+            r3 = r2;
+            r2 = tempoGasto;
+        }
+        else if (tempoGasto < r3)
+        {
+            // Entra apenas para o 3º lugar
+            r3 = tempoGasto;
+        }
+
+        // 3. Grava os novos valores numéricos na memória
+        PlayerPrefs.SetFloat("Recorde_1_Segundos", r1);
+        PlayerPrefs.SetFloat("Recorde_2_Segundos", r2);
+        PlayerPrefs.SetFloat("Recorde_3_Segundos", r3);
+
+        // 4. Grava os textos formatados (Se ainda for o valor inicial 999999, mostra "--:--:--")
+        PlayerPrefs.SetString("Recorde_1_Texto", r1 < 999999f ? FormatTime(r1) : "--:--:--");
+        PlayerPrefs.SetString("Recorde_2_Texto", r2 < 999999f ? FormatTime(r2) : "--:--:--");
+        PlayerPrefs.SetString("Recorde_3_Texto", r3 < 999999f ? FormatTime(r3) : "--:--:--");
+
+        // Salva tudo fisicamente no PC
         PlayerPrefs.Save();
 
-        Debug.Log("Tempo restante guardado com sucesso! Sobrou: " + FormatTime(timeRemaining));
-    }
+        Debug.Log("Tabela de Highscores atualizada nos bastidores!");
+        }
 }
