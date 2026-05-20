@@ -76,5 +76,12 @@ public class PortaDuplaComChave : MonoBehaviour
     {
         isOpen = true;
         Debug.Log("As portas abriram com a chave!");
+
+        // --- ADICIONA ISTO AQUI ---
+        // Gasta a chave, removendo-a da mochila!
+        if (mochilaDoJogador != null)
+        {
+            mochilaDoJogador.RemoverItem(chaveNecessaria);
+        }
     }
 }

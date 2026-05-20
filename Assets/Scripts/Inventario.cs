@@ -1,59 +1,63 @@
 using UnityEngine;
-using UnityEngine.UI; // Precisamos disto para mexer em Imagens!
+using UnityEngine.UI;
 
 public class Inventario : MonoBehaviour
 {
-    // Uma lista com os ícones da nossa UI
     public Image[] iconesDosSlots;
-
-    // Um contador para saber quantos itens já apanhámos
     private int itensGuardados = 0;
+
     [Header("Interface do Jogo")]
     public GameObject canvasDoInventario;
     public GameObject canvasDoPonto;
-    bool openinventory = true;
-    // O Botão Start vai chamar isto!
+
     public void LigarInterface()
     {
         if (canvasDoInventario != null) canvasDoInventario.SetActive(true);
         if (canvasDoPonto != null) canvasDoPonto.SetActive(true);
     }
-    // Esta função vai ser chamada pelos itens 3D
+
     public void AdicionarItem(Sprite imagemDoItem)
     {
-        // Verifica se ainda temos espaço (se não chegámos ao limite dos slots)
-        if (itensGuardados < iconesDosSlots.Length)
-        {
-            // Pega no próximo slot vazio e muda a imagem dele para a do item apanhado
-            iconesDosSlots[itensGuardados].sprite = imagemDoItem;
-
-            // Ativa (torna visível) a imagem nesse slot
-            iconesDosSlots[itensGuardados].gameObject.SetActive(true);
-
-            // Aumenta o número de itens guardados
-            itensGuardados++;
-
-            Debug.Log("Item adicionado ao inventário!");
-        }
-        else
-        {
-            Debug.Log("O inventário está cheio!");
-        }
-    }
-    // Nova função: A porta vai usar isto para verificar se tens a chave
-    public bool TemItem(Sprite imagemProcurada)
-    {
-        // Vai procurar em todos os slots do teu inventário
         for (int i = 0; i < iconesDosSlots.Length; i++)
         {
-            // Se encontrar a imagem da chave num slot que está ativo...
-            if (iconesDosSlots[i].sprite == imagemProcurada && iconesDosSlots[i].gameObject.activeSelf)
+            // CORREÇÃO AQUI: Se o slot estiver desativado OU não tiver imagem nenhuma (null), ele está livre!
+            if (iconesDosSlots[i].gameObject.activeSelf == false || iconesDosSlots[i].sprite == null)
             {
-                return true; // Sim, tens a chave!
+                iconesDosSlots[i].sprite = imagemDoItem;
+                iconesDosSlots[i].gameObject.SetActive(true);
+                itensGuardados++;
+                Debug.Log("Item adicionado ao inventário!");
+                return; // Pára o código aqui
             }
         }
-        return false; // Não, não tens a chave.
+
+        Debug.LogWarning("O inventário está cheio!");
     }
 
-   
-}
+    public bool TemItem(Sprite imagemProcurada)
+    {
+        for (int i = 0; i < iconesDosSlots.Length; i++)
+        {
+            if (iconesDosSlots[i].sprite == imagemProcurada && iconesDosSlots[i].gameObject.activeSelf)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void RemoverItem(Sprite imagemParaRemover)
+    {
+        for (int i = 0; i < iconesDosSlots.Length; i++)
+        {
+            if (iconesDosSlots[i].sprite == imagemParaRemover)
+            {
+                iconesDosSlots[i].sprite = null;
+                iconesDosSlots[i].gameObject.SetActive(false);
+                itensGuardados--;
+                Debug.Log("Item removido do inventário!");
+                return;
+            }
+        }
+    }
+} 
