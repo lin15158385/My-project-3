@@ -39,8 +39,8 @@ public class ObjectDrag : MonoBehaviour
             // Ocultar texto enquanto segura
             if (interactText != null) interactText.enabled = false;
 
-            // Checar input de soltar o objeto (GetKeyUp)
-            if (Input.GetKeyUp(KeyCode.E))
+            // Checar input de soltar o objeto (Botão Direito = 1)
+            if (Input.GetMouseButtonUp(0))
             {
                 DropObject();
             }
@@ -62,18 +62,15 @@ public class ObjectDrag : MonoBehaviour
         {
             if (hit.collider.CompareTag("Draggable"))
             {
-                interactText.text = "E - Segurar";
-                interactText.enabled = true;
+              
 
-                if (Input.GetKeyDown(KeyCode.E))
+                // Segurar objeto com o botão direito do rato (0)
+                if (Input.GetMouseButtonDown(0))
                 {
                     PickUpObject(hit.collider.gameObject);
                 }
             }
-            else
-            {
-                interactText.enabled = false;
-            }
+           
         }
         else
         {
