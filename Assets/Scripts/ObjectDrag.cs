@@ -62,9 +62,11 @@ public class ObjectDrag : MonoBehaviour
         {
             if (hit.collider.CompareTag("Draggable"))
             {
-              
+                interactText.text = "  [LMB] Arrastar";
+                interactText.fontSize = 25;
+                interactText.enabled = true;    
 
-                // Segurar objeto com o botão direito do rato (0)
+                // Segurar objeto com o botão esquerdo do rato (0)
                 if (Input.GetMouseButtonDown(0))
                 {
                     PickUpObject(hit.collider.gameObject);

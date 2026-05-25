@@ -2,16 +2,24 @@ using UnityEngine;
 
 public class LerPapel : MonoBehaviour
 {
+    [Header("O Ecrã do PC")]
     public GameObject painelMensagemUI;
+
+    [Header("Scripts do Jogador (Para Pausar)")]
+    // Espaços para arrastarmos os controlos do jogador
+    public MonoBehaviour movimentoDoJogador;
+    public MonoBehaviour cameraDoJogador;
 
     public void AbrirMensagem()
     {
         painelMensagemUI.SetActive(true); // Abre o pop-up
 
-        // --- A MAGIA DO RATO ---
-        // Destranca o rato para o poderes mover pelo ecrã
+        // 1. DESLIGA OS CONTROLOS DO JOGADOR
+        if (movimentoDoJogador != null) movimentoDoJogador.enabled = false;
+        if (cameraDoJogador != null) cameraDoJogador.enabled = false;
+
+        // 2. SOLTA O RATO
         Cursor.lockState = CursorLockMode.None;
-        // Torna a setinha do rato visível
         Cursor.visible = true;
     }
 
@@ -19,10 +27,12 @@ public class LerPapel : MonoBehaviour
     {
         painelMensagemUI.SetActive(false); // Fecha o pop-up
 
-        // --- VOLTAR AO NORMAL ---
-        // Prende o rato no centro do ecrã
+        // 1. VOLTA A LIGAR OS CONTROLOS
+        if (movimentoDoJogador != null) movimentoDoJogador.enabled = true;
+        if (cameraDoJogador != null) cameraDoJogador.enabled = true;
+
+        // 2. PRENDE O RATO
         Cursor.lockState = CursorLockMode.Locked;
-        // Esconde o rato para jogares em 1ª pessoa
         Cursor.visible = false;
     }
 }
