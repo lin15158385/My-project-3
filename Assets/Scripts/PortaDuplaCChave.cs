@@ -1,12 +1,13 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class PortaDuplaComChave : MonoBehaviour
 {
-    [Header("Configurações do Inventário")]
+    [Header("Configuraï¿½ï¿½es do Inventï¿½rio")]
     public Inventario mochilaDoJogador;
     public Sprite chaveNecessaria;
 
-    [Header("Configurações das Portas")]
+    [Header("Configuraï¿½ï¿½es das Portas")]
     public Transform portaDireita;
     public float anguloAberto = 90f;
     public float velocidade = 2f;
@@ -19,6 +20,7 @@ public class PortaDuplaComChave : MonoBehaviour
     private Quaternion rotacaoAbertaEsq;
     private Quaternion rotacaoFechadaDir;
     private Quaternion rotacaoAbertaDir;
+    public AudioSource audioSource;
 
     void Start()
     {
@@ -30,6 +32,8 @@ public class PortaDuplaComChave : MonoBehaviour
             rotacaoFechadaDir = portaDireita.localRotation;
             rotacaoAbertaDir = Quaternion.Euler(0f, -anguloAberto, 0f) * rotacaoFechadaDir;
         }
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -65,7 +69,7 @@ public class PortaDuplaComChave : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log("As portas estão trancadas! Precisas da chave.");
+                        Debug.Log("As portas estï¿½o trancadas! Precisas da chave.");
                     }
                 }
             }
@@ -75,6 +79,7 @@ public class PortaDuplaComChave : MonoBehaviour
     void AbrirPortas()
     {
         isOpen = true;
+        audioSource.Play();
         Debug.Log("As portas abriram com a chave!");
 
         // --- ADICIONA ISTO AQUI ---

@@ -3,6 +3,7 @@ using TMPro;
 
 public class DoorLeft : MonoBehaviour
 {
+    public AudioSource audioSource;
     public float anguloAberto = 90f;
     public float velocidade = 2f;
     public float distanciaInteracao = 2.5f;
@@ -23,11 +24,13 @@ public class DoorLeft : MonoBehaviour
         
 
         boxCollider = GetComponentInChildren<BoxCollider>();
+
+        audioSource = GetComponent<AudioSource>();
     }
    
     void Update()
     {
-        // A porta continua se movendo suavemente dependendo se isOpen é true ou false
+        // A porta continua se movendo suavemente dependendo se isOpen ï¿½ true ou false
         transform.localRotation = Quaternion.Lerp(
             transform.localRotation,
             isOpen ? rotacaoAberta : rotacaoFechada,
@@ -35,9 +38,10 @@ public class DoorLeft : MonoBehaviour
         );
     }
 
-    // O script do Keypad vai chamar esta função quando a senha estiver certa!
+    // O script do Keypad vai chamar esta funï¿½ï¿½o quando a senha estiver certa!
     public void Abrir()
     {
+        audioSource.Play();
         isOpen = true;
         if (boxCollider != null) boxCollider.enabled = false;
 
