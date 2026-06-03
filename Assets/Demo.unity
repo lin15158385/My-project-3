@@ -30643,7 +30643,7 @@ MonoBehaviour:
   respostaCorreta: 67
   campoDeResposta: {fileID: 1558529711}
   alavancaSecreta: {fileID: 527153455}
-  scriptDoPapel: {fileID: 0}
+  scriptDoPapel: {fileID: 1939748218}
 --- !u!4 &1279146065 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 667403260434183691, guid: 5adbb944cd522ab4eb33d5c046250c86, type: 3}

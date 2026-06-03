@@ -13,7 +13,7 @@ public class TecladoVirtual : MonoBehaviour
         ecraDoPC.text += numero;
     }
 
-    // Esta função vai ser usada por um botão de "Limpar" ou "Del"
+    //botão de "clear"
     public void ApagarTudo()
     {
         ecraDoPC.text = ""; // Esvazia a caixa

@@ -20,7 +20,7 @@ public class HighscoreVitoria : MonoBehaviour
             textoDoTempoAtual.text = "O teu tempo: " + tempoDestaRun;
         }
 
-        // 2. Carrega o Top 3 histórico da memória do PC
+        // 2. Carrega o Top3 histórico da memória do PC
         string p1 = PlayerPrefs.GetString("Recorde_1_Texto", "--:--:--");
         string p2 = PlayerPrefs.GetString("Recorde_2_Texto", "--:--:--");
         string p3 = PlayerPrefs.GetString("Recorde_3_Texto", "--:--:--");
